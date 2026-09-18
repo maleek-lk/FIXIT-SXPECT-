@@ -2,695 +2,635 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#080A0F" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
 
   <title>Fixit Sxpect | Buy. Sell. Repair.</title>
 
   <meta
     name="description"
-    content="Fixit Sxpect is a premium iPhone brokerage offering buying, selling, repairs and statewide delivery across Adamawa State."
+    content="Buy, sell, repair, and waybill iPhones across Adamawa State with Fixit Sxpect."
   />
 
-  <link rel="icon" type="image/webp" href="assets/logo.webp" />
+  <meta name="theme-color" content="#080a0f" />
+
+  <link rel="icon" href="assets/logo.webp" />
   <link rel="stylesheet" href="style.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 </head>
 
 <body>
-
-  <!-- Ambient background -->
+  <!-- AMBIENT BACKGROUND -->
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
-  <div class="grain"></div>
+  <div class="ambient ambient-three"></div>
 
-  <!-- Navigation -->
-  <header class="site-header">
-    <a href="#home" class="brand">
-      <img src="assets/logo.webp" alt="Fixit Sxpect logo" />
-    </a>
+  <!-- HEADER -->
+  <header class="site-header" id="home">
+    <div class="container header-inner">
+      <a href="#home" class="brand">
+        <img src="assets/logo.webp" alt="Fixit Sxpect logo" />
+      </a>
 
-    <nav class="desktop-nav">
-      <a href="#home" class="active">Home</a>
-      <a href="#inventory">Inventory</a>
-      <a href="#services">Services</a>
-      <a href="#process">How It Works</a>
-      <a href="#contact">Contact</a>
-    </nav>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#home" class="active">Home</a>
+        <a href="#inventory">Inventory</a>
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-    <a
-      class="nav-cta"
-      href="https://wa.me/2347087554590"
-      target="_blank"
-      rel="noopener"
-    >
-      WhatsApp Us
-      <span>↗</span>
-    </a>
+      <a
+        href="https://wa.me/2347087554590"
+        class="btn btn-small btn-outline header-cta"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp Us
+        <span>↗</span>
+      </a>
 
-    <button class="menu-toggle" aria-label="Open menu">
-      <span></span>
-      <span></span>
-    </button>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
 
-  <!-- Mobile Navigation -->
-  <div class="mobile-menu">
-    <a href="#home">Home</a>
-    <a href="#inventory">Inventory</a>
-    <a href="#services">Services</a>
-    <a href="#process">How It Works</a>
-    <a href="#contact">Contact</a>
-
-    <a
-      class="mobile-menu-cta"
-      href="https://wa.me/2347087554590"
-      target="_blank"
-      rel="noopener"
-    >
-      Start a Conversation ↗
-    </a>
-  </div>
-
-
-  <main id="home">
-
-    <!-- HERO -->
-    <section class="hero section-shell">
-
-      <div class="hero-copy">
-
-        <div class="eyebrow">
-          <span class="status-dot"></span>
-          Premium iPhone Brokerage
-        </div>
-
-        <h1>
-          Your next iPhone.
-          <span>Handled properly.</span>
-        </h1>
-
-        <p class="hero-description">
-          Buy, sell, repair, and move your iPhone with confidence.
-          Fixit Sxpect makes premium device transactions simple
-          across Adamawa State.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#inventory" class="button button-primary">
-            Explore Inventory
-            <span>↗</span>
-          </a>
-
-          <a
-            href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%27d%20like%20to%20make%20an%20inquiry."
-            target="_blank"
-            rel="noopener"
-            class="button button-ghost"
-          >
-            Talk to Us
-          </a>
-        </div>
-
-        <div class="hero-trust">
-          <div class="trust-avatars">
-            <span>F</span>
-            <span>S</span>
-            <span>✓</span>
+  <!-- HERO -->
+  <main>
+    <section class="hero-section section">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            iPhone sales · repairs · delivery
           </div>
 
-          <div>
-            <strong>Direct. Fast. Reliable.</strong>
-            <small>Built around seamless transactions.</small>
-          </div>
-        </div>
+          <h1>
+            Your next iPhone.
+            <span>Handled properly.</span>
+          </h1>
 
-      </div>
+          <p class="hero-description">
+            Buy with confidence, sell without stress, or repair your iPhone
+            through a reliable local service built for Adamawa.
+          </p>
 
+          <div class="hero-actions">
+            <a href="#inventory" class="btn btn-primary">
+              Explore iPhones
+              <span>↗</span>
+            </a>
 
-      <!-- HERO DEVICE DISPLAY -->
-      <div class="hero-visual">
-
-        <div class="visual-orbit orbit-one"></div>
-        <div class="visual-orbit orbit-two"></div>
-
-        <div class="hero-glow"></div>
-
-        <div class="hero-device-card">
-
-          <div class="device-card-top">
-            <span>FEATURED DEVICE</span>
-            <span class="device-status">
-              <i></i> Available
-            </span>
+            <a href="#services" class="btn btn-ghost">
+              View our services
+              <span>↓</span>
+            </a>
           </div>
 
-          <div class="hero-phone-stage">
-            <img
-              src="assets/12_back.jpg"
-              alt="Featured iPhone"
-              class="hero-phone"
-            />
-          </div>
-
-          <div class="device-card-bottom">
-            <div>
-              <small>Currently spotlighted</small>
-              <h3>iPhone 12</h3>
+          <div class="hero-trust">
+            <div class="trust-item">
+              <strong>01</strong>
+              <span>Verified devices</span>
             </div>
 
-            <span class="round-arrow">↗</span>
-          </div>
+            <div class="trust-item">
+              <strong>02</strong>
+              <span>Fast communication</span>
+            </div>
 
-        </div>
-
-        <div class="floating-spec spec-top">
-          <span class="spec-icon">✦</span>
-          <div>
-            <strong>Carefully handled</strong>
-            <small>Device-first service</small>
-          </div>
-        </div>
-
-        <div class="floating-spec spec-bottom">
-          <span class="spec-icon">↗</span>
-          <div>
-            <strong>Statewide access</strong>
-            <small>Waybill accepted</small>
+            <div class="trust-item">
+              <strong>03</strong>
+              <span>Statewide delivery</span>
+            </div>
           </div>
         </div>
 
+        <div class="hero-visual reveal">
+          <div class="hero-visual-label">
+            <span></span>
+            Featured device
+          </div>
+
+          <div class="hero-orbit orbit-one"></div>
+          <div class="hero-orbit orbit-two"></div>
+
+          <div class="hero-phone-card">
+            <div class="phone-card-top">
+              <span>iPhone 12</span>
+              <span class="phone-status">Available</span>
+            </div>
+
+            <div class="phone-image-wrap">
+              <img
+                src="assets/12_back.jpg"
+                alt="iPhone 12"
+                class="hero-phone-image"
+              />
+            </div>
+
+            <div class="phone-card-bottom">
+              <div>
+                <small>Starting from</small>
+                <strong>₦315,000</strong>
+              </div>
+
+              <a href="#inventory" aria-label="View iPhone inventory">
+                ↗
+              </a>
+            </div>
+          </div>
+
+          <div class="floating-note note-one">
+            <span class="note-icon">✦</span>
+            <div>
+              <strong>Clean devices</strong>
+              <small>Checked before listing</small>
+            </div>
+          </div>
+
+          <div class="floating-note note-two">
+            <span class="note-icon">⌁</span>
+            <div>
+              <strong>Adamawa-wide</strong>
+              <small>Waybill available</small>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section>
 
+    <!-- VALUE STRIP -->
+    <section class="value-strip">
+      <div class="container value-strip-inner">
+        <div class="value-item">
+          <span class="value-number">01</span>
+          <span>Buy genuine used iPhones</span>
+        </div>
 
-    <!-- QUICK VALUE STRIP -->
-    <section class="value-strip section-shell">
+        <div class="value-item">
+          <span class="value-number">02</span>
+          <span>Sell your current device</span>
+        </div>
 
-      <div class="value-item">
-        <span class="value-number">01</span>
-        <div>
-          <strong>Buy with clarity</strong>
-          <p>Know what you're getting before you commit.</p>
+        <div class="value-item">
+          <span class="value-number">03</span>
+          <span>Repair and restore</span>
+        </div>
+
+        <div class="value-item">
+          <span class="value-number">04</span>
+          <span>Waybill across Adamawa</span>
         </div>
       </div>
-
-      <div class="value-item">
-        <span class="value-number">02</span>
-        <div>
-          <strong>Repair without stress</strong>
-          <p>Send your device from anywhere in Adamawa.</p>
-        </div>
-      </div>
-
-      <div class="value-item">
-        <span class="value-number">03</span>
-        <div>
-          <strong>Deal directly</strong>
-          <p>One conversation. Clear communication. Easy action.</p>
-        </div>
-      </div>
-
     </section>
 
+    <!-- INTRO -->
+    <section class="intro-section section">
+      <div class="container intro-grid">
+        <div class="section-label reveal">
+          <span>About Fixit Sxpect</span>
+        </div>
 
-    <!-- INTRODUCTION -->
-    <section class="intro-section section-shell">
-
-      <div class="section-label">
-        <span>01</span>
-        THE SXPECT STANDARD
-      </div>
-
-      <div class="intro-layout">
-
-        <h2>
-          More than a phone.
-          <em>A better way to get one.</em>
-        </h2>
-
-        <div class="intro-copy">
-          <p>
-            Whether you're upgrading, replacing a damaged device,
-            selling your current iPhone, or looking for a dependable
-            repair service, we keep the process direct.
-          </p>
+        <div class="intro-content reveal">
+          <h2>
+            Better devices.
+            <br />
+            <span>Better transactions.</span>
+          </h2>
 
           <p>
-            No unnecessary complications. Just clear options,
-            responsive communication, and a service designed around
-            your convenience.
+            Fixit Sxpect is an iPhone-focused business serving customers in
+            Jimeta, Yola, and across Adamawa State. Whether you are buying,
+            selling, repairing, or sending a device through waybill, our goal
+            is simple: make the entire process clear, direct, and reliable.
           </p>
 
-          <a href="#services" class="text-link">
-            Discover what we do <span>↗</span>
+          <a href="#how-it-works" class="text-link">
+            See how it works
+            <span>↗</span>
           </a>
         </div>
-
       </div>
-
     </section>
-
 
     <!-- SERVICES -->
-    <section class="services-section section-shell" id="services">
-
-      <div class="section-heading-row">
-
-        <div>
-          <div class="section-label">
-            <span>02</span>
-            WHAT WE HANDLE
+    <section class="services-section section" id="services">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-kicker">What we do</div>
+            <h2>One place for your<br /><span>iPhone needs.</span></h2>
           </div>
 
-          <h2>
-            Whatever your
-            <span>device needs.</span>
-          </h2>
+          <p>
+            From your first inquiry to final delivery, we keep the process
+            straightforward and easy to follow.
+          </p>
         </div>
 
-        <p>
-          From finding your next phone to getting your current
-          one back in shape, we make every step easier.
-        </p>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-card-top">
+              <span class="service-number">01</span>
+              <span class="service-arrow">↗</span>
+            </div>
 
+            <div class="service-icon">▣</div>
+
+            <h3>Buy iPhones</h3>
+
+            <p>
+              Browse available devices, compare conditions, ask questions,
+              and secure the right iPhone for your budget.
+            </p>
+
+            <a href="#inventory" class="service-link">
+              Browse inventory <span>↗</span>
+            </a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-card-top">
+              <span class="service-number">02</span>
+              <span class="service-arrow">↗</span>
+            </div>
+
+            <div class="service-icon">↔</div>
+
+            <h3>Sell your iPhone</h3>
+
+            <p>
+              Get in touch with your device details and receive a direct
+              conversation about selling or trading in your phone.
+            </p>
+
+            <a
+              href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%20want%20to%20sell%20my%20iPhone."
+              class="service-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sell your device <span>↗</span>
+            </a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-card-top">
+              <span class="service-number">03</span>
+              <span class="service-arrow">↗</span>
+            </div>
+
+            <div class="service-icon">⌁</div>
+
+            <h3>Repair iPhones</h3>
+
+            <p>
+              Waybill your faulty iPhone to us for assessment, repair, and
+              return delivery when the job is complete.
+            </p>
+
+            <a
+              href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%20want%20to%20book%20an%20iPhone%20repair."
+              class="service-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book a repair <span>↗</span>
+            </a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-card-top">
+              <span class="service-number">04</span>
+              <span class="service-arrow">↗</span>
+            </div>
+
+            <div class="service-icon">⌖</div>
+
+            <h3>Waybill delivery</h3>
+
+            <p>
+              Purchase remotely or send your phone from another LGA and
+              coordinate delivery with us through WhatsApp.
+            </p>
+
+            <a href="#how-it-works" class="service-link">
+              Learn more <span>↗</span>
+            </a>
+          </article>
+        </div>
       </div>
-
-
-      <div class="services-grid">
-
-        <article class="service-card service-featured">
-
-          <div class="service-card-top">
-            <span class="service-index">01 / 04</span>
-            <span class="service-symbol">↗</span>
-          </div>
-
-          <div class="service-icon">▱</div>
-
-          <h3>Buy an iPhone</h3>
-
-          <p>
-            Explore available devices with clear details,
-            honest communication, and direct access to our team.
-          </p>
-
-          <a href="#inventory" class="card-link">
-            View inventory <span>↗</span>
-          </a>
-
-        </article>
-
-
-        <article class="service-card">
-
-          <div class="service-card-top">
-            <span class="service-index">02 / 04</span>
-            <span class="service-symbol">↗</span>
-          </div>
-
-          <div class="service-icon">⇄</div>
-
-          <h3>Sell your device</h3>
-
-          <p>
-            Looking to let go of your iPhone? Start a direct
-            conversation and discuss your device with us.
-          </p>
-
-          <a
-            href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%20want%20to%20sell%20my%20iPhone."
-            target="_blank"
-            rel="noopener"
-            class="card-link"
-          >
-            Sell your iPhone <span>↗</span>
-          </a>
-
-        </article>
-
-
-        <article class="service-card">
-
-          <div class="service-card-top">
-            <span class="service-index">03 / 04</span>
-            <span class="service-symbol">↗</span>
-          </div>
-
-          <div class="service-icon">⌁</div>
-
-          <h3>Repair your iPhone</h3>
-
-          <p>
-            From screens to batteries and other issues,
-            get your device assessed and handled properly.
-          </p>
-
-          <a
-            href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%20need%20an%20iPhone%20repair."
-            target="_blank"
-            rel="noopener"
-            class="card-link"
-          >
-            Book a repair <span>↗</span>
-          </a>
-
-        </article>
-
-
-        <article class="service-card">
-
-          <div class="service-card-top">
-            <span class="service-index">04 / 04</span>
-            <span class="service-symbol">↗</span>
-          </div>
-
-          <div class="service-icon">⌖</div>
-
-          <h3>Waybill statewide</h3>
-
-          <p>
-            Wherever you are in Adamawa, we can arrange a
-            convenient waybill for your phone or repair.
-          </p>
-
-          <a href="#process" class="card-link">
-            See how it works <span>↗</span>
-          </a>
-
-        </article>
-
-      </div>
-
     </section>
-
 
     <!-- INVENTORY -->
-    <section class="inventory-section section-shell" id="inventory">
-
-      <div class="inventory-heading">
-
-        <div>
-          <div class="section-label">
-            <span>03</span>
-            THE SHOWROOM
+    <section class="inventory-section section" id="inventory">
+      <div class="container">
+        <div class="section-heading inventory-heading reveal">
+          <div>
+            <div class="section-kicker">Current selection</div>
+            <h2>Available<br /><span>right now.</span></h2>
           </div>
 
-          <h2>
-            Devices worth
-            <span>looking twice at.</span>
-          </h2>
+          <div class="inventory-heading-side">
+            <p>
+              Each device comes with clear details. Open a listing to inspect
+              the phone, view specifications, and make an inquiry.
+            </p>
+
+            <div class="inventory-controls">
+              <button
+                class="inventory-control inventory-prev"
+                type="button"
+                aria-label="Previous products"
+              >
+                ←
+              </button>
+
+              <button
+                class="inventory-control inventory-next"
+                type="button"
+                aria-label="Next products"
+              >
+                →
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="inventory-controls">
-          <button class="slider-button inventory-prev" aria-label="Previous">
-            ←
-          </button>
-          <button class="slider-button inventory-next" aria-label="Next">
-            →
-          </button>
+        <div class="inventory-slider" id="inventorySlider"></div>
+
+        <div class="inventory-footnote reveal">
+          <span class="footnote-dot"></span>
+          Inventory changes regularly. Contact us to confirm availability,
+          condition, and current pricing.
         </div>
-
       </div>
-
-      <div class="inventory-subheading">
-        <p>
-          Browse our current spotlight devices. Swipe, drag,
-          or explore each phone for more details.
-        </p>
-
-        <span class="inventory-note">
-          AVAILABLE DEVICES
-          <i></i>
-        </span>
-      </div>
-
-
-      <div class="inventory-slider" id="inventorySlider">
-
-        <!-- Cards rendered by JavaScript -->
-
-      </div>
-
-      <div class="inventory-footer">
-        <span>More devices available through our WhatsApp catalog.</span>
-
-        <a
-          href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%27d%20like%20to%20see%20your%20full%20WhatsApp%20catalog."
-          target="_blank"
-          rel="noopener"
-          class="text-link"
-        >
-          View full catalog <span>↗</span>
-        </a>
-      </div>
-
     </section>
 
-
-    <!-- STATEWIDE WAYBILL -->
-    <section class="waybill-section section-shell" id="process">
-
-      <div class="waybill-visual">
-
-        <div class="waybill-glow"></div>
-
-        <div class="waybill-card">
-
-          <div class="waybill-card-header">
-            <span>FIXIT SXPECT</span>
-            <span>ADAMAWA STATE</span>
-          </div>
-
-          <div class="waybill-map">
-            <div class="map-grid"></div>
-            <div class="map-route route-one"></div>
-            <div class="map-route route-two"></div>
-            <div class="map-node node-one"></div>
-            <div class="map-node node-two"></div>
-            <div class="map-node node-three"></div>
-
-            <div class="map-center">
-              <span>⌖</span>
-              <strong>STATEWIDE</strong>
-              <small>ACCESS</small>
-            </div>
-          </div>
-
-          <div class="waybill-card-footer">
-            <span>From your location</span>
-            <strong>To your doorstep</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="waybill-content">
-
-        <div class="section-label">
-          <span>04</span>
-          BUILT FOR ADAMAWA
-        </div>
-
-        <h2>
-          Wherever you are,
-          <span>we can work with you.</span>
-        </h2>
-
-        <p>
-          You don't have to be in the same location to get
-          access to our services. We accept waybills for repairs
-          and can arrange delivery for phones purchased from us.
-        </p>
-
-        <div class="process-list">
-
-          <div class="process-step">
-            <span>01</span>
-            <div>
-              <strong>Start a conversation</strong>
-              <p>Tell us what you need through WhatsApp.</p>
-            </div>
-          </div>
-
-          <div class="process-step">
-            <span>02</span>
-            <div>
-              <strong>Confirm the details</strong>
-              <p>We agree on the device, repair, or transaction.</p>
-            </div>
-          </div>
-
-          <div class="process-step">
-            <span>03</span>
-            <div>
-              <strong>Waybill or receive</strong>
-              <p>Send your device or arrange delivery with us.</p>
-            </div>
-          </div>
-
-        </div>
-
-        <a
-          href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%27m%20outside%20your%20location%20and%20want%20to%20ask%20about%20waybill%20service."
-          target="_blank"
-          rel="noopener"
-          class="button button-primary"
-        >
-          Ask About Waybill
-          <span>↗</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- REPAIR CTA -->
-    <section class="repair-cta section-shell">
-
-      <div class="repair-cta-inner">
-
-        <div class="repair-cta-copy">
-
-          <div class="section-label">
-            <span>05</span>
-            NEED A FIX?
-          </div>
+    <!-- HOW IT WORKS / WAYBILL -->
+    <section class="waybill-section section" id="how-it-works">
+      <div class="container waybill-grid">
+        <div class="waybill-copy reveal">
+          <div class="section-kicker">Simple from start to finish</div>
 
           <h2>
-            Your phone deserves
-            <span>proper attention.</span>
+            Your phone can<br />
+            travel to us.
           </h2>
 
           <p>
-            Tell us what's wrong. We'll help you understand
-            the next step and get the process moving.
+            You do not have to be physically nearby. Customers across
+            Adamawa can contact us, arrange a waybill, and coordinate the
+            transaction remotely.
           </p>
 
-        </div>
+          <div class="waybill-steps">
+            <div class="waybill-step">
+              <span>01</span>
+              <div>
+                <strong>Send an inquiry</strong>
+                <p>Tell us what you need through WhatsApp.</p>
+              </div>
+            </div>
 
-        <a
-          href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%20want%20to%20book%20a%20repair."
-          target="_blank"
-          rel="noopener"
-          class="button button-light"
-        >
-          Book a Repair
-          <span>↗</span>
-        </a>
+            <div class="waybill-step">
+              <span>02</span>
+              <div>
+                <strong>Confirm the details</strong>
+                <p>We discuss the device, price, repair, or delivery.</p>
+              </div>
+            </div>
 
-      </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section class="contact-section section-shell" id="contact">
-
-      <div class="contact-heading">
-
-        <div class="section-label">
-          <span>06</span>
-          LET'S TALK
-        </div>
-
-        <h2>
-          One message.
-          <span>Let's get it sorted.</span>
-        </h2>
-
-      </div>
-
-      <div class="contact-grid">
-
-        <div class="contact-main">
-          <p>
-            Questions about a device, a repair, a sale,
-            or delivery? Our WhatsApp is the fastest way
-            to reach us.
-          </p>
+            <div class="waybill-step">
+              <span>03</span>
+              <div>
+                <strong>Coordinate waybill</strong>
+                <p>Send or receive the device through an agreed route.</p>
+              </div>
+            </div>
+          </div>
 
           <a
-            href="https://wa.me/2347087554590"
+            href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%20want%20to%20make%20a%20waybill%20inquiry."
+            class="btn btn-primary"
             target="_blank"
-            rel="noopener"
-            class="contact-number"
+            rel="noopener noreferrer"
           >
-            +234 708 755 4590
+            Start an inquiry
             <span>↗</span>
           </a>
         </div>
 
-        <div class="contact-details">
+        <div class="waybill-visual reveal">
+          <div class="map-grid"></div>
 
-          <div class="contact-detail">
-            <span>LOCATION</span>
-            <strong>Jimeta, Yola</strong>
-            <small>Adamawa State, Nigeria</small>
+          <div class="map-route route-one"></div>
+          <div class="map-route route-two"></div>
+          <div class="map-route route-three"></div>
+
+          <div class="map-node node-origin">
+            <span></span>
+            <small>Your location</small>
           </div>
 
-          <div class="contact-detail">
-            <span>AVAILABILITY</span>
-            <strong>Direct communication</strong>
-            <small>Message us for current details</small>
+          <div class="map-node node-destination">
+            <span></span>
+            <small>Fixit Sxpect</small>
           </div>
 
+          <div class="map-center-card">
+            <div class="map-card-symbol">⌖</div>
+            <strong>Adamawa State</strong>
+            <span>Jimeta · Yola</span>
+          </div>
+
+          <div class="map-caption">
+            <span class="caption-line"></span>
+            Statewide coordination
+          </div>
         </div>
-
       </div>
-
     </section>
 
+    <!-- REPAIR CTA -->
+    <section class="repair-section section">
+      <div class="container">
+        <div class="repair-card reveal">
+          <div class="repair-content">
+            <div class="section-kicker">Device giving you trouble?</div>
+
+            <h2>
+              Let us get your<br />
+              iPhone working again.
+            </h2>
+
+            <p>
+              From screen issues to general device faults, contact us first
+              and we will guide you through the next step.
+            </p>
+
+            <a
+              href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%20need%20help%20with%20an%20iPhone%20repair."
+              class="btn btn-light"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Discuss a repair
+              <span>↗</span>
+            </a>
+          </div>
+
+          <div class="repair-decoration">
+            <div class="repair-ring ring-one"></div>
+            <div class="repair-ring ring-two"></div>
+            <div class="repair-ring ring-three"></div>
+
+            <span>FIX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-intro reveal">
+          <div class="section-kicker">Get in touch</div>
+
+          <h2>
+            Let us talk<br />
+            <span>about your device.</span>
+          </h2>
+
+          <p>
+            Ask about stock, pricing, repairs, selling your phone, or
+            delivery options. WhatsApp is the fastest way to reach us.
+          </p>
+        </div>
+
+        <div class="contact-actions reveal">
+          <a
+            href="https://wa.me/2347087554590"
+            class="contact-action"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <small>Primary contact</small>
+              <strong>WhatsApp Business</strong>
+            </div>
+
+            <span>↗</span>
+          </a>
+
+          <a
+            href="https://wa.me/2347087554590?text=Hello%20Fixit%20Sxpect%2C%20I%20would%20like%20to%20make%20an%20inquiry."
+            class="contact-action"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div>
+              <small>Quick inquiry</small>
+              <strong>Start a conversation</strong>
+            </div>
+
+            <span>↗</span>
+          </a>
+
+          <div class="contact-location">
+            <span class="location-pin">⌖</span>
+            <div>
+              <small>Based in</small>
+              <strong>Jimeta, Yola, Adamawa State</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-
   <!-- FOOTER -->
-  <footer class="site-footer section-shell">
-
-    <div class="footer-top">
-
+  <footer class="site-footer">
+    <div class="container footer-inner">
       <a href="#home" class="footer-brand">
         <img src="assets/logo.webp" alt="Fixit Sxpect" />
       </a>
 
       <p>
-        Premium iPhone brokerage.
-        Buy. Sell. Repair.
+        Buy. Sell. Repair. Delivered properly.
       </p>
 
-      <a href="#home" class="back-top">
-        Back to top ↑
-      </a>
+      <div class="footer-meta">
+        <span>
+          © <span data-current-year></span> Fixit Sxpect
+        </span>
 
+        <a href="#home">Back to top ↑</a>
+      </div>
     </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 Fixit Sxpect. All rights reserved.</span>
-      <span>Built for better transactions.</span>
-    </div>
-
   </footer>
 
+  <!-- FLOATING WHATSAPP -->
+  <a
+    href="https://wa.me/2347087554590"
+    class="floating-whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat with Fixit Sxpect on WhatsApp"
+  >
+    <span class="whatsapp-symbol">◔</span>
+    <span>Chat with us</span>
+  </a>
 
   <!-- PRODUCT MODAL -->
-  <div class="product-modal" id="productModal" aria-hidden="true">
+  <div
+    class="product-modal"
+    id="productModal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalProductName"
+  >
+    <div class="modal-backdrop" data-close-modal></div>
 
-    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button
+        class="modal-close"
+        type="button"
+        aria-label="Close product details"
+        data-close-modal
+      >
+        ×
+      </button>
 
-    <div class="modal-window">
-
-      <button class="modal-close" aria-label="Close modal">×</button>
-
-      <div class="modal-image-area">
-        <img id="modalProductImage" src="" alt="" />
+      <div class="modal-image-column">
+        <div class="modal-image-frame">
+          <img
+            id="modalProductImage"
+            src=""
+            alt="Selected iPhone"
+          />
+        </div>
       </div>
 
-      <div class="modal-product-content">
-
-        <div class="modal-product-label">DEVICE DETAILS</div>
+      <div class="modal-content">
+        <div class="section-kicker">Device details</div>
 
         <h2 id="modalProductName">iPhone</h2>
 
@@ -699,24 +639,19 @@
         <div class="modal-specs" id="modalProductSpecs"></div>
 
         <a
-          id="modalWhatsApp"
           href="#"
+          class="btn btn-primary modal-whatsapp"
+          id="modalWhatsApp"
           target="_blank"
-          rel="noopener"
-          class="button button-primary modal-button"
+          rel="noopener noreferrer"
         >
-          Ask About This Device
+          Ask about this device
           <span>↗</span>
         </a>
-
       </div>
-
     </div>
-
   </div>
 
-
   <script src="script.js"></script>
-
 </body>
-               </html>
+</html>

@@ -1,107 +1,98 @@
-/* =========================================================
-   FIXIT SXPECT
-   Main Website JavaScript
-========================================================= */
-
 (() => {
   "use strict";
 
-  /* =========================================================
-     CONFIG
-  ========================================================= */
+  /* CONFIG */
 
   const WHATSAPP_NUMBER = "2347087554590";
 
-  const whatsappLink = (message = "") => {
-    const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-  };
+  const whatsappBase = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-  /*
-    Update only the image paths here if your filenames differ.
-  */
+  /* INVENTORY DATA */
 
   const inventory = [
     {
       id: "iphone-7-plus",
       name: "iPhone 7 Plus",
+      shortName: "7 Plus",
       color: "Product Red",
-      tag: "Classic Flagship",
+      price: "₦85,000",
       condition: "Clean Used",
-      battery: "Battery health available on request",
-      faceId: "Touch ID",
-      parts: "Parts status confirmed before purchase",
-      network: "Network availability confirmed",
-      price: "Ask for current price",
+      badge: "Available",
       description:
-        "A bold red iPhone 7 Plus with a white front and classic black home button. Ideal for buyers who want a reliable large-screen iPhone at an accessible price.",
-      images: [
-        "assets/7plus_front.jpg",
-        "assets/7plus_back.jpg"
-      ]
+        "A reliable classic with a large display, dual-camera system, and solid everyday performance.",
+      image: "assets/7plus_front.jpg",
+      backImage: "assets/7plus_back.jpg",
+      specs: {
+        Storage: "128GB",
+        "Battery Health": "To be confirmed",
+        "Face ID": "Not applicable",
+        "Network": "Factory Unlocked",
+        Condition: "Clean Used",
+      },
     },
-
     {
       id: "iphone-8-plus",
       name: "iPhone 8 Plus",
-      color: "Gold / Ivory",
-      tag: "Elegant Classic",
+      shortName: "8 Plus",
+      color: "Gold",
+      price: "₦125,000",
       condition: "Clean Used",
-      battery: "Battery health available on request",
-      faceId: "Touch ID",
-      parts: "Parts status confirmed before purchase",
-      network: "Network availability confirmed",
-      price: "Ask for current price",
+      badge: "Available",
       description:
-        "A refined iPhone 8 Plus with a warm gold finish and white front. A balanced choice for buyers who prefer the classic iPhone design with strong everyday performance.",
-      images: [
-        "assets/8plus_front.jpg",
-        "assets/8plus_back.jpg"
-      ]
+        "A premium-feeling iPhone with a spacious display, strong performance, and classic Apple build quality.",
+      image: "assets/8plus_front.jpg",
+      backImage: "assets/8plus_back.jpg",
+      specs: {
+        Storage: "64GB",
+        "Battery Health": "To be confirmed",
+        "Touch ID": "Working",
+        "Network": "Factory Unlocked",
+        Condition: "Clean Used",
+      },
     },
-
     {
       id: "iphone-11",
       name: "iPhone 11",
-      color: "Product Red",
-      tag: "Everyday Power",
+      shortName: "11",
+      color: "Red",
+      price: "₦235,000",
       condition: "Clean Used",
-      battery: "Battery health available on request",
-      faceId: "Face ID",
-      parts: "Parts status confirmed before purchase",
-      network: "Network availability confirmed",
-      price: "Ask for current price",
+      badge: "Popular",
       description:
-        "A striking red iPhone 11 built for everyday performance, strong cameras, Face ID convenience, and a modern all-screen experience.",
-      images: [
-        "assets/11_front.jpg",
-        "assets/11_back.jpg"
-      ]
+        "A balanced everyday iPhone with excellent cameras, dependable performance, and modern design.",
+      image: "assets/11_front.jpg",
+      backImage: "assets/11_back.jpg",
+      specs: {
+        Storage: "64GB",
+        "Battery Health": "To be confirmed",
+        FaceID: "To be confirmed",
+        "Network": "Factory Unlocked",
+        Condition: "Clean Used",
+      },
     },
-
     {
       id: "iphone-12",
       name: "iPhone 12",
+      shortName: "12",
       color: "Black",
-      tag: "Modern Essential",
+      price: "₦315,000",
       condition: "Clean Used",
-      battery: "Battery health available on request",
-      faceId: "Face ID",
-      parts: "Parts status confirmed before purchase",
-      network: "Network availability confirmed",
-      price: "Ask for current price",
+      badge: "Featured",
       description:
-        "A sleek black iPhone 12 with a modern flat-edge design. Designed for buyers who want a current-looking iPhone with dependable daily performance.",
-      images: [
-        "assets/12_front.jpg",
-        "assets/12_back.jpg"
-      ]
-    }
+        "A refined, modern iPhone with an OLED display, 5G connectivity, and a sharp squared-edge design.",
+      image: "assets/12_front.jpg",
+      backImage: "assets/12_back.jpg",
+      specs: {
+        Storage: "64GB",
+        "Battery Health": "To be confirmed",
+        FaceID: "To be confirmed",
+        "Network": "Factory Unlocked",
+        Condition: "Clean Used",
+      },
+    },
   ];
 
-  /* =========================================================
-     DOM HELPERS
-  ========================================================= */
+  /* HELPERS */
 
   const select = (selector, parent = document) =>
     parent.querySelector(selector);
@@ -109,523 +100,396 @@
   const selectAll = (selector, parent = document) =>
     [...parent.querySelectorAll(selector)];
 
-  const createElement = (tag, className = "", html = "") => {
-    const element = document.createElement(tag);
+  const createWhatsAppLink = (message) =>
+    `${whatsappBase}?text=${encodeURIComponent(message)}`;
 
-    if (className) {
-      element.className = className;
-    }
-
-    if (html) {
-      element.innerHTML = html;
-    }
-
-    return element;
-  };
-
-  /* =========================================================
-     INVENTORY RENDERING
-  ========================================================= */
+  /* RENDER INVENTORY */
 
   const inventorySlider = select("#inventorySlider");
 
   function renderInventory() {
     if (!inventorySlider) return;
 
-    inventorySlider.innerHTML = "";
+    inventorySlider.innerHTML = inventory
+      .map(
+        (product, index) => `
+          <article class="product-card reveal" data-product-id="${product.id}">
+            <div class="product-image-wrap">
+              <img
+                src="${product.image}"
+                data-front="${product.image}"
+                data-back="${product.backImage}"
+                alt="${product.name} ${product.color}"
+                loading="${index === 0 ? "eager" : "lazy"}"
+              />
 
-    inventory.forEach((product, index) => {
-      const card = createElement("article", "inventory-card");
+              <span class="product-badge">${product.badge}</span>
 
-      if (index === 0) {
-        card.classList.add("inventory-card-featured");
-      }
+              <button
+                class="product-image-toggle"
+                type="button"
+                aria-label="Switch product image"
+                data-image-toggle
+              >
+                ↻
+              </button>
 
-      card.dataset.productId = product.id;
-
-      card.innerHTML = `
-        <div class="inventory-card-image">
-          <img
-            src="${product.images[0]}"
-            alt="${product.name} in ${product.color}"
-            loading="lazy"
-            data-image-index="0"
-          />
-
-          <span class="inventory-card-index">
-            0${index + 1}
-          </span>
-
-          <span class="inventory-card-tag">
-            ${product.tag}
-          </span>
-
-          <span class="inventory-image-count">
-            01 / ${String(product.images.length).padStart(2, "0")}
-          </span>
-
-          <div class="inventory-card-gallery">
-            ${product.images
-              .map(
-                (_, imageIndex) => `
-                  <button
-                    class="inventory-dot ${
-                      imageIndex === 0 ? "active" : ""
-                    }"
-                    type="button"
-                    aria-label="View image ${imageIndex + 1} of ${
-                      product.name
-                    }"
-                    data-product-id="${product.id}"
-                    data-image-index="${imageIndex}"
-                  ></button>
-                `
-              )
-              .join("")}
-          </div>
-        </div>
-
-        <div class="inventory-card-content">
-          <div class="inventory-card-meta">
-            <span>${product.color}</span>
-            <span>${product.condition}</span>
-          </div>
-
-          <h3>${product.name}</h3>
-
-          <p>
-            ${product.description}
-          </p>
-
-          <div class="inventory-card-specs">
-            <span>${product.faceId}</span>
-            <span>${product.network}</span>
-          </div>
-
-          <div class="inventory-card-footer">
-            <div>
-              <small>Availability</small>
-              <strong>${product.price}</strong>
+              <div class="product-dots">
+                <span class="product-dot active"></span>
+                <span class="product-dot"></span>
+              </div>
             </div>
 
-            <button
-              class="card-link product-view-button"
-              type="button"
-              data-product-id="${product.id}"
-            >
-              View details
-              <span>↗</span>
-            </button>
-          </div>
-        </div>
-      `;
+            <div class="product-info">
+              <div class="product-meta">
+                <span>${product.color}</span>
+                <strong>${product.price}</strong>
+              </div>
 
-      inventorySlider.appendChild(card);
-    });
+              <h3>${product.name}</h3>
 
-    bindInventoryEvents();
+              <p>${product.description}</p>
+
+              <div class="product-bottom">
+                <span class="product-condition">
+                  ${product.condition}
+                </span>
+
+                <button
+                  class="product-view"
+                  type="button"
+                  data-product-view="${product.id}"
+                >
+                  View details <span>↗</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        `
+      )
+      .join("");
+
+    attachProductEvents();
+    initializeRevealObserver();
   }
 
-  function bindInventoryEvents() {
-    selectAll(".inventory-dot").forEach((dot) => {
-      dot.addEventListener("click", (event) => {
-        event.stopPropagation();
+  /* IMAGE SWITCHING */
 
-        const productId = dot.dataset.productId;
-        const imageIndex = Number(dot.dataset.imageIndex);
-
-        changeProductImage(productId, imageIndex);
-      });
-    });
-
-    selectAll(".product-view-button").forEach((button) => {
+  function attachProductEvents() {
+    selectAll("[data-image-toggle]").forEach((button) => {
       button.addEventListener("click", (event) => {
         event.stopPropagation();
 
-        const product = inventory.find(
-          (item) => item.id === button.dataset.productId
-        );
+        const card = button.closest(".product-card");
+        const image = select("img", card);
+        const dots = selectAll(".product-dot", card);
 
-        if (product) {
-          openProductModal(product);
-        }
+        const showingFront = image.src.includes(image.dataset.front);
+
+        image.style.opacity = "0";
+
+        setTimeout(() => {
+          image.src = showingFront
+            ? image.dataset.back
+            : image.dataset.front;
+
+          image.style.opacity = "1";
+
+          dots.forEach((dot, index) => {
+            dot.classList.toggle(
+              "active",
+              showingFront ? index === 1 : index === 0
+            );
+          });
+        }, 180);
       });
     });
 
-    selectAll(".inventory-card").forEach((card) => {
-      card.addEventListener("click", () => {
+    selectAll("[data-product-view]").forEach((button) => {
+      button.addEventListener("click", () => {
         const product = inventory.find(
-          (item) => item.id === card.dataset.productId
+          (item) => item.id === button.dataset.productView
         );
 
-        if (product) {
-          openProductModal(product);
-        }
+        if (product) openProductModal(product);
       });
     });
   }
 
-  function changeProductImage(productId, imageIndex) {
-    const product = inventory.find((item) => item.id === productId);
-    const card = select(
-      `.inventory-card[data-product-id="${productId}"]`
-    );
-
-    if (!product || !card) return;
-
-    const image = select("img", card);
-    const dots = selectAll(".inventory-dot", card);
-    const imageCount = select(".inventory-image-count", card);
-
-    if (!image || !product.images[imageIndex]) return;
-
-    image.style.opacity = "0";
-
-    setTimeout(() => {
-      image.src = product.images[imageIndex];
-      image.alt = `${product.name}, image ${imageIndex + 1}`;
-      image.dataset.imageIndex = imageIndex;
-      image.style.opacity = "1";
-    }, 150);
-
-    dots.forEach((dot, index) => {
-      dot.classList.toggle("active", index === imageIndex);
-    });
-
-    if (imageCount) {
-      imageCount.textContent = `${String(imageIndex + 1).padStart(
-        2,
-        "0"
-      )} / ${String(product.images.length).padStart(2, "0")}`;
-    }
-  }
-
-  /* =========================================================
-     INVENTORY SLIDER CONTROLS
-  ========================================================= */
-
-  const previousButton = select(".inventory-prev");
-  const nextButton = select(".inventory-next");
-
-  function scrollInventory(direction) {
-    if (!inventorySlider) return;
-
-    const card = select(".inventory-card", inventorySlider);
-
-    if (!card) return;
-
-    const cardWidth = card.getBoundingClientRect().width;
-    const gap = 24;
-
-    inventorySlider.scrollBy({
-      left: direction * (cardWidth + gap),
-      behavior: "smooth"
-    });
-  }
-
-  previousButton?.addEventListener("click", () => {
-    scrollInventory(-1);
-  });
-
-  nextButton?.addEventListener("click", () => {
-    scrollInventory(1);
-  });
-
-  /* =========================================================
-     DRAG / SWIPE INVENTORY
-  ========================================================= */
+  /* INVENTORY DRAGGING */
 
   let isDragging = false;
   let dragStartX = 0;
   let dragScrollLeft = 0;
 
-  inventorySlider?.addEventListener("pointerdown", (event) => {
-    isDragging = true;
-    dragStartX = event.pageX;
-    dragScrollLeft = inventorySlider.scrollLeft;
+  if (inventorySlider) {
+    inventorySlider.addEventListener("mousedown", (event) => {
+      isDragging = true;
+      inventorySlider.classList.add("dragging");
+      dragStartX = event.pageX - inventorySlider.offsetLeft;
+      dragScrollLeft = inventorySlider.scrollLeft;
+    });
 
-    inventorySlider.classList.add("is-dragging");
-    inventorySlider.setPointerCapture(event.pointerId);
-  });
+    inventorySlider.addEventListener("mouseleave", () => {
+      isDragging = false;
+      inventorySlider.classList.remove("dragging");
+    });
 
-  inventorySlider?.addEventListener("pointermove", (event) => {
-    if (!isDragging) return;
+    inventorySlider.addEventListener("mouseup", () => {
+      isDragging = false;
+      inventorySlider.classList.remove("dragging");
+    });
 
-    const distance = event.pageX - dragStartX;
+    inventorySlider.addEventListener("mousemove", (event) => {
+      if (!isDragging) return;
 
-    inventorySlider.scrollLeft = dragScrollLeft - distance;
-  });
+      event.preventDefault();
 
-  const stopDragging = () => {
-    isDragging = false;
-    inventorySlider?.classList.remove("is-dragging");
-  };
+      const currentX = event.pageX - inventorySlider.offsetLeft;
+      const distance = (currentX - dragStartX) * 1.4;
 
-  inventorySlider?.addEventListener("pointerup", stopDragging);
-  inventorySlider?.addEventListener("pointercancel", stopDragging);
-  inventorySlider?.addEventListener("pointerleave", stopDragging);
+      inventorySlider.scrollLeft = dragScrollLeft - distance;
+    });
 
-  /* =========================================================
-     PRODUCT MODAL
-  ========================================================= */
+    let touchStartX = 0;
+    let touchScrollLeft = 0;
+
+    inventorySlider.addEventListener(
+      "touchstart",
+      (event) => {
+        touchStartX = event.touches[0].pageX;
+        touchScrollLeft = inventorySlider.scrollLeft;
+      },
+      { passive: true }
+    );
+
+    inventorySlider.addEventListener(
+      "touchmove",
+      (event) => {
+        const currentX = event.touches[0].pageX;
+        const distance = (currentX - touchStartX) * 1.2;
+
+        inventorySlider.scrollLeft = touchScrollLeft - distance;
+      },
+      { passive: true }
+    );
+  }
+
+  /* INVENTORY CONTROLS */
+
+  const previousButton = select(".inventory-prev");
+  const nextButton = select(".inventory-next");
+
+  function moveInventory(direction) {
+    if (!inventorySlider) return;
+
+    const amount = inventorySlider.clientWidth * 0.78;
+
+    inventorySlider.scrollBy({
+      left: direction * amount,
+      behavior: "smooth",
+    });
+  }
+
+  previousButton?.addEventListener("click", () => moveInventory(-1));
+  nextButton?.addEventListener("click", () => moveInventory(1));
+
+  /* PRODUCT MODAL */
 
   const productModal = select("#productModal");
-  const modalClose = select(".product-modal-close");
   const modalImage = select("#modalProductImage");
   const modalName = select("#modalProductName");
   const modalDescription = select("#modalProductDescription");
   const modalSpecs = select("#modalProductSpecs");
   const modalWhatsApp = select("#modalWhatsApp");
-
-  let activeProduct = null;
+  const modalClose = select(".modal-close");
+  const modalOverlay = select(".modal-overlay");
 
   function openProductModal(product) {
     if (!productModal) return;
 
-    activeProduct = product;
+    modalImage.src = product.image;
+    modalImage.alt = product.name;
 
-    if (modalImage) {
-      modalImage.src = product.images[0];
-      modalImage.alt = product.name;
-    }
+    modalName.textContent = product.name;
+    modalDescription.textContent = product.description;
 
-    if (modalName) {
-      modalName.textContent = product.name;
-    }
+    modalSpecs.innerHTML = Object.entries(product.specs)
+      .map(
+        ([key, value]) => `
+          <div class="modal-spec">
+            <span>${key}</span>
+            <strong>${value}</strong>
+          </div>
+        `
+      )
+      .join("");
 
-    if (modalDescription) {
-      modalDescription.textContent = product.description;
-    }
+    modalWhatsApp.href = createWhatsAppLink(
+      `Hello Fixit Sxpect, I'm interested in the ${product.name}. Please share the current availability, condition, battery health, and final price.`
+    );
 
-    if (modalSpecs) {
-      modalSpecs.innerHTML = `
-        <li>
-          <span>Finish</span>
-          <strong>${product.color}</strong>
-        </li>
-
-        <li>
-          <span>Condition</span>
-          <strong>${product.condition}</strong>
-        </li>
-
-        <li>
-          <span>Biometric</span>
-          <strong>${product.faceId}</strong>
-        </li>
-
-        <li>
-          <span>Battery</span>
-          <strong>${product.battery}</strong>
-        </li>
-
-        <li>
-          <span>Parts status</span>
-          <strong>${product.parts}</strong>
-        </li>
-
-        <li>
-          <span>Network</span>
-          <strong>${product.network}</strong>
-        </li>
-      `;
-    }
-
-    if (modalWhatsApp) {
-      modalWhatsApp.href = whatsappLink(
-        `Hello Fixit Sxpect, I am interested in the ${product.name}. Please share the current price, availability, battery health, and full condition details.`
-      );
-    }
-
-    productModal.classList.add("is-open");
-    document.body.classList.add("no-scroll");
+    productModal.classList.add("active");
+    document.body.classList.add("menu-open");
   }
 
   function closeProductModal() {
-    if (!productModal) return;
-
-    productModal.classList.remove("is-open");
-    document.body.classList.remove("no-scroll");
-    activeProduct = null;
+    productModal?.classList.remove("active");
+    document.body.classList.remove("menu-open");
   }
 
   modalClose?.addEventListener("click", closeProductModal);
-
-  productModal?.addEventListener("click", (event) => {
-    if (event.target === productModal) {
-      closeProductModal();
-    }
-  });
+  modalOverlay?.addEventListener("click", closeProductModal);
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeProductModal();
-    }
+    if (event.key === "Escape") closeProductModal();
   });
 
-  /* =========================================================
-     MOBILE MENU
-  ========================================================= */
+  /* MOBILE MENU */
 
   const menuToggle = select(".menu-toggle");
-  const mobileMenu = select(".mobile-menu");
-
-  function closeMobileMenu() {
-    menuToggle?.classList.remove("active");
-    mobileMenu?.classList.remove("is-open");
-    document.body.classList.remove("no-scroll");
-  }
+  const mainNav = select(".main-nav");
 
   menuToggle?.addEventListener("click", () => {
-    const isOpen = mobileMenu?.classList.toggle("is-open");
+    const isOpen = mainNav.classList.toggle("active");
 
     menuToggle.classList.toggle("active", isOpen);
-    document.body.classList.toggle("no-scroll", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    document.body.classList.toggle("menu-open", isOpen);
   });
 
-  selectAll(".mobile-menu a").forEach((link) => {
-    link.addEventListener("click", closeMobileMenu);
+  selectAll(".main-nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mainNav?.classList.remove("active");
+      menuToggle?.classList.remove("active");
+      menuToggle?.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("menu-open");
+    });
   });
 
-  document.addEventListener("click", (event) => {
-    if (
-      mobileMenu?.classList.contains("is-open") &&
-      !mobileMenu.contains(event.target) &&
-      !menuToggle?.contains(event.target)
-    ) {
-      closeMobileMenu();
-    }
-  });
+  /* WHATSAPP LINKS */
 
-  /* =========================================================
-     WHATSAPP LINKS
-  ========================================================= */
+  function initializeWhatsAppLinks() {
+    selectAll("[data-whatsapp]").forEach((link) => {
+      const message =
+        link.dataset.whatsapp ||
+        "Hello Fixit Sxpect, I would like to make an inquiry.";
 
-  selectAll("[data-whatsapp]").forEach((element) => {
-    const message =
-      element.dataset.whatsapp ||
-      "Hello Fixit Sxpect, I would like to make an inquiry.";
+      link.href = createWhatsAppLink(message);
+      link.target = "_blank";
+      link.rel = "noopener";
+    });
 
-    element.href = whatsappLink(message);
-  });
+    selectAll('a[href*="wa.me"]').forEach((link) => {
+      link.target = "_blank";
+      link.rel = "noopener";
+    });
+  }
 
-  /* =========================================================
-     HEADER SCROLL STATE
-  ========================================================= */
+  /* HEADER SCROLL */
 
   const header = select(".site-header");
 
-  function updateHeader() {
-    if (!header) return;
-
-    header.classList.toggle("scrolled", window.scrollY > 30);
+  function handleHeaderScroll() {
+    header?.classList.toggle("scrolled", window.scrollY > 30);
   }
 
-  window.addEventListener("scroll", updateHeader, {
-    passive: true
+  window.addEventListener("scroll", handleHeaderScroll, {
+    passive: true,
   });
 
-  updateHeader();
+  handleHeaderScroll();
 
-  /* =========================================================
-     REVEAL ON SCROLL
-  ========================================================= */
+  /* REVEAL OBSERVER */
 
-  const revealElements = selectAll(
-    ".service-card, .intro-copy, .intro-visual, .waybill-copy, .waybill-visual, .repair-panel, .contact-panel, .inventory-card"
-  );
+  let revealObserver;
 
-  if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+  function initializeRevealObserver() {
+    const revealElements = selectAll(".reveal:not(.visible)");
 
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        threshold: 0.12
-      }
-    );
+    if (!("IntersectionObserver" in window)) {
+      revealElements.forEach((element) =>
+        element.classList.add("visible")
+      );
+      return;
+    }
 
-    revealElements.forEach((element) => {
-      revealObserver.observe(element);
-    });
-  } else {
-    revealElements.forEach((element) => {
-      element.classList.add("is-visible");
-    });
+    if (!revealObserver) {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+        }
+      );
+    }
+
+    revealElements.forEach((element) => revealObserver.observe(element));
   }
 
-  /* =========================================================
-     IMAGE FALLBACK
-  ========================================================= */
+  /* IMAGE FALLBACK */
 
   document.addEventListener(
     "error",
     (event) => {
-      const target = event.target;
+      const image = event.target;
 
-      if (target.tagName !== "IMG") return;
+      if (image.tagName !== "IMG") return;
 
-      target.classList.add("image-error");
-
-      if (!target.dataset.fallbackApplied) {
-        target.dataset.fallbackApplied = "true";
-        target.style.visibility = "hidden";
-      }
+      image.style.objectFit = "contain";
+      image.style.padding = "30px";
+      image.style.opacity = "0.45";
     },
     true
   );
 
-  /* =========================================================
-     INITIALIZE
-  ========================================================= */
+  /* INITIALIZE */
 
   renderInventory();
+  initializeWhatsAppLinks();
+  initializeRevealObserver();
 
-    /* =========================================================
-     ACTIVE NAVIGATION
-  ========================================================= */
+  /* ACTIVE NAVIGATION */
 
-  const navigationLinks = selectAll(
-    '.desktop-nav a[href^="#"], .mobile-menu a[href^="#"]'
-  );
+  const sections = selectAll("section[id]");
+  const navLinks = selectAll('.main-nav a[href^="#"]');
 
-  const pageSections = selectAll("main section[id]");
-
-  function updateActiveNavigation() {
-    const currentPosition = window.scrollY + 180;
+  function updateActiveNav() {
+    const scrollPosition = window.scrollY + 180;
 
     let currentSection = "";
 
-    pageSections.forEach((section) => {
-      if (currentPosition >= section.offsetTop) {
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
         currentSection = section.id;
       }
     });
 
-    navigationLinks.forEach((link) => {
-      const targetId = link.getAttribute("href")?.replace("#", "");
-
-      link.classList.toggle(
-        "active",
-        targetId === currentSection
-      );
+    navLinks.forEach((link) => {
+      const target = link.getAttribute("href").replace("#", "");
+      link.classList.toggle("active", target === currentSection);
     });
   }
 
-  window.addEventListener("scroll", updateActiveNavigation, {
-    passive: true
+  window.addEventListener("scroll", updateActiveNav, {
+    passive: true,
   });
 
-  updateActiveNavigation();
+  updateActiveNav();
 
-  /* =========================================================
-     SMOOTH ANCHOR SCROLLING
-  ========================================================= */
+  /* SMOOTH ANCHOR FALLBACK */
 
   selectAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -633,274 +497,106 @@
 
       if (!targetId || targetId === "#") return;
 
-      const target = select(targetId);
+      const targetElement = select(targetId);
 
-      if (!target) return;
+      if (!targetElement) return;
 
       event.preventDefault();
 
-      const headerOffset = 90;
+      const headerOffset = 85;
       const targetPosition =
-        target.getBoundingClientRect().top +
+        targetElement.getBoundingClientRect().top +
         window.scrollY -
         headerOffset;
 
       window.scrollTo({
         top: targetPosition,
-        behavior: "smooth"
+        behavior: "smooth",
       });
     });
   });
 
-  /* =========================================================
-     HERO BUTTON MICRO INTERACTIONS
-  ========================================================= */
+  /* BUTTON PRESS EFFECT */
 
-  selectAll(".button, .slider-button, .round-arrow").forEach(
+  selectAll(".btn, .inventory-control, .contact-action").forEach(
     (button) => {
-      button.addEventListener("pointerdown", () => {
-        button.classList.add("pressed");
+      button.addEventListener("mousedown", () => {
+        button.style.transform = "scale(0.97)";
       });
 
-      button.addEventListener("pointerup", () => {
-        button.classList.remove("pressed");
+      button.addEventListener("mouseup", () => {
+        button.style.transform = "";
       });
 
-      button.addEventListener("pointerleave", () => {
-        button.classList.remove("pressed");
+      button.addEventListener("mouseleave", () => {
+        button.style.transform = "";
       });
     }
   );
 
-  /* =========================================================
-     PARALLAX EFFECT FOR HERO VISUAL
-  ========================================================= */
+  /* HERO PHONE PARALLAX */
 
   const heroVisual = select(".hero-visual");
-
-  if (heroVisual && window.matchMedia("(pointer: fine)").matches) {
-    heroVisual.addEventListener("mousemove", (event) => {
-      const bounds = heroVisual.getBoundingClientRect();
-
-      const x =
-        (event.clientX - bounds.left) / bounds.width - 0.5;
-
-      const y =
-        (event.clientY - bounds.top) / bounds.height - 0.5;
-
-      heroVisual.style.transform = `
-        perspective(1000px)
-        rotateY(${x * 4}deg)
-        rotateX(${y * -4}deg)
-      `;
-    });
-
-    heroVisual.addEventListener("mouseleave", () => {
-      heroVisual.style.transform = "";
-    });
-  }
-
-  /* =========================================================
-     CONTACT FORM-LIKE ACTIONS
-  ========================================================= */
-
-  selectAll("[data-contact-message]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const message =
-        button.dataset.contactMessage ||
-        "Hello Fixit Sxpect, I would like to make an inquiry.";
-
-      window.open(
-        whatsappLink(message),
-        "_blank",
-        "noopener,noreferrer"
-      );
-    });
-  });
-
-  /* =========================================================
-     CURRENT YEAR
-  ========================================================= */
-
-  selectAll("[data-current-year]").forEach((element) => {
-    element.textContent = new Date().getFullYear();
-  });
-
-  /* =========================================================
-     PREVENT IMAGE DRAGGING
-  ========================================================= */
-
-  selectAll("img").forEach((image) => {
-    image.setAttribute("draggable", "false");
-  });
-
-  /* =========================================================
-     PAGE LOADED STATE
-  ========================================================= */
-
-  window.addEventListener("load", () => {
-    document.body.classList.add("page-loaded");
-  });
-
-  /* =========================================================
-     ACTIVE NAVIGATION
-  ========================================================= */
-
-  const navigationLinks = selectAll(
-    '.desktop-nav a[href^="#"], .mobile-menu a[href^="#"]'
-  );
-
-  const pageSections = selectAll("main section[id]");
-
-  function updateActiveNavigation() {
-    const currentPosition = window.scrollY + 180;
-    let currentSection = "";
-
-    pageSections.forEach((section) => {
-      if (currentPosition >= section.offsetTop) {
-        currentSection = section.id;
-      }
-    });
-
-    navigationLinks.forEach((link) => {
-      const targetId = link.getAttribute("href")?.replace("#", "");
-
-      link.classList.toggle(
-        "active",
-        targetId === currentSection
-      );
-    });
-  }
-
-  window.addEventListener("scroll", updateActiveNavigation, {
-    passive: true
-  });
-
-  updateActiveNavigation();
-
-  /* =========================================================
-     SMOOTH ANCHOR SCROLLING
-  ========================================================= */
-
-  selectAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const targetId = link.getAttribute("href");
-
-      if (!targetId || targetId === "#") return;
-
-      const target = select(targetId);
-
-      if (!target) return;
-
-      event.preventDefault();
-
-      const headerOffset = 90;
-
-      const targetPosition =
-        target.getBoundingClientRect().top +
-        window.scrollY -
-        headerOffset;
-
-      window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-      });
-    });
-  });
-
-  /* =========================================================
-     BUTTON PRESS EFFECT
-  ========================================================= */
-
-  selectAll(".button, .slider-button, .round-arrow").forEach(
-    (button) => {
-      button.addEventListener("pointerdown", () => {
-        button.classList.add("pressed");
-      });
-
-      button.addEventListener("pointerup", () => {
-        button.classList.remove("pressed");
-      });
-
-      button.addEventListener("pointerleave", () => {
-        button.classList.remove("pressed");
-      });
-    }
-  );
-
-  /* =========================================================
-     HERO PARALLAX
-  ========================================================= */
-
-  const heroVisual = select(".hero-visual");
+  const heroPhoneCard = select(".hero-phone-card");
 
   if (
     heroVisual &&
+    heroPhoneCard &&
     window.matchMedia("(pointer: fine)").matches
   ) {
     heroVisual.addEventListener("mousemove", (event) => {
-      const bounds = heroVisual.getBoundingClientRect();
+      const rect = heroVisual.getBoundingClientRect();
 
-      const x =
-        (event.clientX - bounds.left) / bounds.width - 0.5;
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
 
-      const y =
-        (event.clientY - bounds.top) / bounds.height - 0.5;
-
-      heroVisual.style.transform = `
-        perspective(1000px)
-        rotateY(${x * 4}deg)
-        rotateX(${y * -4}deg)
+      heroPhoneCard.style.transform = `
+        rotate(${7 + x * 5}deg)
+        translate(${x * 10}px, ${y * -10}px)
       `;
     });
 
     heroVisual.addEventListener("mouseleave", () => {
-      heroVisual.style.transform = "";
+      heroPhoneCard.style.transform = "rotate(7deg)";
     });
   }
 
-  /* =========================================================
-     CUSTOM WHATSAPP ACTIONS
-  ========================================================= */
+  /* CONTACT ACTIONS */
 
-  selectAll("[data-contact-message]").forEach((button) => {
-    button.addEventListener("click", () => {
+  selectAll("[data-contact-message]").forEach((element) => {
+    element.addEventListener("click", () => {
       const message =
-        button.dataset.contactMessage ||
+        element.dataset.contactMessage ||
         "Hello Fixit Sxpect, I would like to make an inquiry.";
 
       window.open(
-        whatsappLink(message),
+        createWhatsAppLink(message),
         "_blank",
         "noopener,noreferrer"
       );
     });
   });
 
-  /* =========================================================
-     CURRENT YEAR
-  ========================================================= */
+  /* CURRENT YEAR */
 
-  selectAll("[data-current-year]").forEach((element) => {
-    element.textContent = new Date().getFullYear();
-  });
+  const yearElement = select("[data-current-year]");
 
-  /* =========================================================
-     IMAGE SETTINGS
-  ========================================================= */
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  /* IMAGE LOADING ENHANCEMENT */
 
   selectAll("img").forEach((image) => {
-    image.setAttribute("draggable", "false");
+    image.addEventListener("load", () => {
+      image.classList.add("loaded");
+    });
   });
 
-  /* =========================================================
-     PAGE LOADED
-  ========================================================= */
+  /* PAGE LOADED STATE */
 
   window.addEventListener("load", () => {
     document.body.classList.add("page-loaded");
   });
 
-})();
-  
 })();

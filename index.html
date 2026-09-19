@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIXIT SXPECT | Buy • Sell • Repair</title>
+<meta name="description" content="FIXIT SXPECT. Premium iPhone buying, selling, repair and waybill services across Adamawa State.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap');
+
+:root{
+  --bg:#080808;
+  --gold:#d4af37;
+  --gold-light:#f3dc83;
+  --rose:#e8a39b;
+  --white:#f7f4ed;
+  --muted:#96938d;
+  --line:rgba(255,255,255,.1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(212,175,55,.12),transparent 35%),
+    var(--bg);
+  color:var(--white);
+  font-family:"DM Sans",sans-serif;
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+  background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.025) 50%,transparent 75%);
+}
+
+.ambient{
+  position:fixed;
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  background:rgba(212,175,55,.07);
+  filter:blur(120px);
+  pointer-events:none;
+}
+.ambient.one{top:-250px;left:-200px}
+.ambient.two{right:-250px;top:40%;background:rgba(232,163,155,.045)}
+
+nav{
+  position:fixed;
+  z-index:999;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  width:calc(100% - 24px);
+  max-width:1100px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 12px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:rgba(12,12,12,.72);
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  box-shadow:0 20px 60px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.06);
+}
+
+.nav-logo{height:48px;width:75px;object-fit:contain}
+
+.nav-links{display:flex;gap:26px}
+.nav-links a{color:#a7a49e;text-decoration:none;font-size:12px;transition:.3s}
+.nav-links a:hover{color:var(--gold-light)}
+
+.nav-action{
+  color:#111;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+  padding:12px 16px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#f5df89,var(--gold));
+  box-shadow:0 5px 25px rgba(212,175,55,.16);
+}
+
+.hero{
+  min-height:100svh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:150px 7% 80px;
+  overflow:hidden;
+}
+
+.hero-content{
+  width:55%;
+  max-width:680px;
+  position:relative;
+  z-index:5;
+}
+
+.kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 13px;
+  border:1px solid rgba(212,175,55,.25);
+  border-radius:50px;
+  background:rgba(212,175,55,.06);
+  color:var(--gold-light);
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.kicker span{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:var(--gold-light);
+  box-shadow:0 0 10px var(--gold);
+}
+
+.hero h1{
+  margin-top:25px;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(50px,7vw,90px);
+  line-height:.9;
+  letter-spacing:-4px;
+}
+
+.hero h1 em{color:var(--gold-light);font-style:normal}
+
+.hero-description{
+  margin-top:27px;
+  max-width:520px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+}
+
+.hero-buttons{display:flex;gap:11px;margin-top:32px;flex-wrap:wrap}
+
+.button{
+  text-decoration:none;
+  padding:15px 21px;
+  border-radius:16px;
+  font-size:11px;
+  font-weight:800;
+  transition:.35s;
+}
+.button:hover{transform:translateY(-4px)}
+.button.primary{
+  color:#111;
+  background:linear-gradient(135deg,#f8e59b,#d4af37);
+  box-shadow:0 15px 45px rgba(212,175,55,.16);
+}
+.button.secondary{
+  color:white;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(15px);
+}
+
+.hero-phone{
+  position:absolute;
+  right:9%;
+  top:50%;
+  transform:translateY(-50%);
+  width:330px;
+  height:520px;
+  perspective:1200px;
+}
+
+.hero-phone-glow{
+  position:absolute;
+  inset:70px 20px;
+  background:radial-gradient(circle,rgba(212,175,55,.24),transparent 65%);
+  filter:blur(30px);
+}
+
+.phone{
+  position:absolute;
+  width:225px;
+  height:450px;
+  left:50px;
+  top:30px;
+  border-radius:44px;
+  background:linear-gradient(135deg,#555,#080808 25%,#222 65%,#050505);
+  border:2px solid #666;
+  box-shadow:30px 40px 80px rgba(0,0,0,.8),inset 5px 5px 15px rgba(255,255,255,.12),inset -7px -7px 20px rgba(0,0,0,.8);
+  transform:rotateY(-22deg) rotateX(7deg) rotateZ(4deg);
+  transition:1s cubic-bezier(.2,.8,.2,1);
+}
+.hero-phone:hover .phone{
+  transform:rotateY(15deg) rotateX(-5deg) rotateZ(-3deg) translateY(-12px);
+}
+
+.phone-screen{
+  position:absolute;
+  inset:11px;
+  border-radius:36px;
+  overflow:hidden;
+  background:radial-gradient(circle at 50% 25%,rgba(212,175,55,.18),transparent 35%),linear-gradient(160deg,#1c1c1c,#030303);
+}
+
+.phone-screen:after{
+  content:"";
+  position:absolute;
+  width:80px;
+  height:500px;
+  top:-40px;
+  left:-120px;
+  transform:rotate(25deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);
+  animation:reflection 5s infinite;
+}
+@keyframes reflection{
+  0%{left:-150px}
+  45%,100%{left:300px}
+}
+
+.phone-notch{
+  position:absolute;
+  z-index:3;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  width:75px;
+  height:22px;
+  border-radius:20px;
+  background:#020202;
+}
+
+.phone-content{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.phone-content img{width:95px;opacity:.9}
+.phone-content small{margin-top:12px;color:var(--gold-light);font-size:7px;letter-spacing:3px}
+.phone-button{position:absolute;right:-5px;top:130px;width:4px;height:70px;background:#777;border-radius:10px}
+
+section{width:min(1180px,92%);margin:auto;padding:110px 0}
+
+.section-label{
+  color:var(--gold-light);
+  text-transform:uppercase;
+  font-size:9px;
+  letter-spacing:3px;
+  margin-bottom:14px;
+}
+
+.section-title{
+  font-family:"Playfair Display",serif;
+  font-size:clamp(38px,6vw,65px);
+  line-height:1;
+  letter-spacing:-2px;
+}
+
+.section-description{
+  color:var(--muted);
+  max-width:600px;
+  font-size:13px;
+  line-height:1.8;
+  margin-top:18px;
+}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:45px}
+
+.service{
+  min-height:300px;
+  position:relative;
+  overflow:hidden;
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.018));
+  backdrop-filter:blur(20px);
+  transition:.4s;
+}
+.service:hover{transform:translateY(-8px);border-color:rgba(212,175,55,.35)}
+.service:before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  right:-90px;
+  top:-90px;
+  border-radius:50%;
+  background:rgba(212,175,55,.12);
+  filter:blur(20px);
+}
+.service-number{color:#555;font-size:10px}
+.service-icon{
+  margin-top:35px;
+  width:50px;
+  height:50px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  border:1px solid rgba(212,175,55,.25);
+  background:linear-gradient(145deg,rgba(212,175,55,.15),rgba(212,175,55,.02));
+  color:var(--gold-light);
+  font-size:20px;
+}
+.service h3{margin-top:27px;font-family:"Playfair Display",serif;font-size:29px}
+.service p{margin-top:9px;color:var(--muted);font-size:12px;line-height:1.7}
+
+.inventory-head{display:flex;justify-content:space-between;align-items:end;gap:30px}
+.inventory-count{color:#777;font-size:11px}
+
+.filters{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:25px 0;
+  scrollbar-width:none;
+}
+.filters::-webkit-scrollbar{display:none}
+
+.filter{
+  white-space:nowrap;
+  padding:10px 16px;
+  border-radius:50px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:#999;
+  font-size:10px;
+  cursor:pointer;
+  transition:.3s;
+}
+.filter.active,.filter:hover{color:#111;background:var(--gold-light);border-color:var(--gold-light)}
+
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+
+.product{
+  position:relative;
+  overflow:hidden;
+  min-height:350px;
+  border:1px solid var(--line);
+  border-radius:25px;
+  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+  transition:transform .25s,border .3s;
+  transform-style:preserve-3d;
+}
+.product:hover{border-color:rgba(212,175,55,.4)}
+
+.product-image{
+  height:230px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:18px;
+  background:radial-gradient(circle at center,rgba(212,175,55,.08),transparent 65%);
+}
+.product-image img{
+  max-width:100%;
+  max-height:210px;
+  object-fit:contain;
+  filter:drop-shadow(0 25px 25px rgba(0,0,0,.6));
+  transition:.5s;
+}
+.product:hover .product-image img{transform:translateY(-8px) scale(1.05)}
+
+.product-info{padding:18px}
+.product-info small{color:var(--gold-light);font-size:9px;letter-spacing:1px;text-transform:uppercase}
+.product-info h3{margin-top:5px;font-size:17px}
+.product-info p{color:#777;font-size:10px;margin-top:5px}
+.product-button{
+  display:block;
+  margin-top:13px;
+  padding:10px;
+  text-align:center;
+  color:#111;
+  background:var(--gold-light);
+  border-radius:12px;
+  text-decoration:none;
+  font-size:10px;
+  font-weight:800;
+}
+
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:45px}
+.process-card{padding:28px;border:1px solid var(--line);border-radius:25px;background:rgba(255,255,255,.025)}
+.process-card span{color:var(--gold-light);font-size:11px}
+.process-card h3{margin-top:40px;font-family:"Playfair Display",serif;font-size:25px}
+.process-card p{margin-top:10px;color:var(--muted);font-size:12px;line-height:1.7}
+
+.quote-box{
+  position:relative;
+  overflow:hidden;
+  padding:40px;
+  border-radius:32px;
+  border:1px solid rgba(212,175,55,.18);
+  background:radial-gradient(circle at 100% 0%,rgba(212,175,55,.13),transparent 40%),rgba(255,255,255,.035);
+}
+.quote-box h3{font-family:"Playfair Display",serif;font-size:34px}
+.quote-grid{margin-top:25px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+
+select,input{
+  width:100%;
+  padding:15px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  outline:none;
+  background:#141414;
+  color:white;
+  font-family:inherit;
+  font-size:11px;
+}
+
+.quote-result{
+  margin-top:15px;
+  padding:16px;
+  border-radius:14px;
+  background:rgba(212,175,55,.07);
+  color:var(--gold-light);
+  font-size:11px;
+}
+
+.tracker{margin-top:35px;display:flex;gap:10px;max-width:600px}
+.tracker button{
+  border:0;
+  padding:0 22px;
+  border-radius:14px;
+  background:var(--gold);
+  font-weight:800;
+  cursor:pointer;
+}
+
+.local{
+  width:min(1000px,92%);
+  margin:60px auto 100px;
+  padding:75px 25px;
+  text-align:center;
+  border-radius:35px;
+  border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 0%,rgba(212,175,55,.12),transparent 55%),rgba(255,255,255,.025);
+}
+.local h2{font-family:"Playfair Display",serif;font-size:clamp(40px,7vw,70px);line-height:.95}
+.local p{max-width:560px;margin:20px auto 30px;color:var(--muted);font-size:13px;line-height:1.8}
+
+footer{padding:35px 20px;border-top:1px solid var(--line);text-align:center;color:#555;font-size:9px;letter-spacing:1px}
+
+@media(max-width:800px){
+  nav{height:58px}
+  .nav-links{display:none}
+  .hero{min-height:auto;padding:135px 20px 40px;display:block;text-align:center}
+  .hero-content{width:100%}
+  .hero h1{font-size:55px;letter-spacing:-3px}
+  .hero-description{margin-left:auto;margin-right:auto}
+  .hero-buttons{justify-content:center}
+  .hero-phone{position:relative;right:auto;top:auto;transform:none;margin:40px auto 0;width:290px;height:470px}
+  .phone{left:35px}
+  .services,.process{grid-template-columns:1fr}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .product{min-height:310px}
+  .product-image{height:190px}
+  .product-image img{max-height:175px}
+  .quote-grid{grid-template-columns:1fr}
+  .quote-box{padding:25px}
+  .tracker{flex-direction:column}
+  .tracker button{height:48px}
+}
+
+@media(max-width:430px){
+  .hero h1{font-size:49px}
+  .products{gap:10px}
+  .product{border-radius:19px}
+  .product-info{padding:13px}
+  .product-info h3{font-size:14px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient one"></div>
+<div class="ambient two"></div>
+
+<nav>
+  <img src="assets/logo.webp" class="nav-logo" alt="FIXIT SXPECT">
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#phones">iPhones</a>
+    <a href="#quote">Quote</a>
+    <a href="#track">Track</a>
+  </div>
+  <a href="https://wa.me/2347087554590" class="nav-action">GET STARTED</a>
+</nav>
+
+<header class="hero">
+
+  <div class="hero-content">
+
+    <div class="kicker"><span></span> Premium iPhone Solutions</div>
+
+    <h1>
+      Your iPhone.<br>
+      <em>Handled Right.</em>
+    </h1>
+
+    <p class="hero-description">
+      Buy. Sell. Repair.
+      Premium iPhone services with trusted handling,
+      transparent processes and waybill support across Adamawa State.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#phones" class="button primary">SHOP iPHONES</a>
+      <a href="#services" class="button secondary">EXPLORE SERVICES</a>
+    </div>
+
+  </div>
+
+  <div class="hero-phone">
+    <div class="hero-phone-glow"></div>
+
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-notch"></div>
+        <div class="phone-content">
+          <img src="assets/logo.webp" alt="FIXIT SXPECT">
+          <small>BUY • SELL • REPAIR</small>
+        </div>
+      </div>
+      <div class="phone-button"></div>
+    </div>
+  </div>
+
+</header>
+
+<section id="services">
+
+  <div class="section-label">What We Do</div>
+
+  <h2 class="section-title">
+    Three ways<br>
+    we handle your iPhone.
+  </h2>
+
+  <p class="section-description">
+    From finding your next device to repairing the one
+    you already own, FIXIT SXPECT gives you one trusted destination.
+  </p>
+
+  <div class="services">
+
+    <div class="service">
+      <div class="service-number">01 / FIX</div>
+      <div class="service-icon">✦</div>
+      <h3>Repair</h3>
+      <p>Screen damage, battery issues, diagnostics and other iPhone repairs handled with care.</p>
+    </div>
+
+    <div class="service">
+      <div class="service-number">02 / BUY</div>
+      <div class="service-icon">◇</div>
+      <h3>Buy</h3>
+      <p>Explore available iPhones and find the device that matches your model, condition and budget.</p>
+    </div>
+
+    <div class="service">
+      <div class="service-number">03 / SELL</div>
+      <div class="service-icon">↗</div>
+      <h3>Sell</h3>
+      <p>Looking to upgrade? Submit your device and arrange an inspection, valuation or trade-in.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="phones">
+
+  <div class="inventory-head">
+    <div>
+      <div class="section-label">Available Devices</div>
+      <h2 class="section-title">The collection.</h2>
+    </div>
+    <div class="inventory-count">CURRENT INVENTORY</div>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-filter="all">ALL</button>
+    <button class="filter" data-filter="11">iPHONE 11</button>
+    <button class="filter" data-filter="12">iPHONE 12</button>
+    <button class="filter" data-filter="xr">iPHONE XR</button>
+    <button class="filter" data-filter="older">CLASSIC</button>
+  </div>
+
+  <div class="products">
+
+    <div class="product" data-category="11">
+      <div class="product-image"><img src="assets/11_front.jpg" alt="iPhone 11"></div>
+      <div class="product-info">
+        <small>iPhone 11</small>
+        <h3>iPhone 11</h3>
+        <p>Front + back available</p>
+        <a class="product-button" href="https://wa.me/2347087554590?text=Hello%20FIXIT%20SXPECT%2C%20I%27m%20interested%20in%20the%20iPhone%2011.">ASK ABOUT THIS</a>
+      </div>
+    </div>
+
+    <div class="product" data-category="12">
+      <div class="product-image"><img src="assets/12_front.jpg" alt="iPhone 12"></div>
+      <div class="product-info">
+        <small>iPhone 12</small>
+        <h3>iPhone 12</h3>
+        <p>Front + back available</p>
+        <a class="product-button" href="https://wa.me/2347087554590?text=Hello%20FIXIT%20SXPECT%2C%20I%27m%20interested%20in%20the%20iPhone%2012.">ASK ABOUT THIS</a>
+      </div>
+    </div>
+
+    <div class="product" data-category="12">
+      <div class="product-image"><img src="assets/12pm_front.jpg" alt="iPhone 12 Pro Max"></div>
+      <div class="product-info">
+        <small>iPhone 12 Pro Max</small>
+        <h3>12 Pro Max</h3>
+        <p>Front + back available</p>
+        <a class="product-button" href="https://wa.me/2347087554590?text=Hello%20FIXIT%20SXPECT%2C%20I%27m%20interested%20in%20the%20iPhone%2012%20Pro%20Max.">ASK ABOUT THIS</a>
+      </div>
+    </div>
+
+    <div class="product" data-category="new">
+      <div class="product-image"><img src="assets/14pro.webp" alt="iPhone 14 Pro"></div>
+      <div class="product-info">
+        <small>iPhone 14 Pro</small>
+        <h3>14 Pro</h3>
+        <p>Availability on request</p>
+        <a class="product-button" href="https://wa.me/2347087554590?text=Hello%20FIXIT%20SXPECT%2C%20I%27m%20interested%20in%20the%20iPhone%2014%20Pro.">ASK ABOUT THIS</a>
+      </div>
+    </div>
+
+    <div class="product" data-category="xr">
+      <div class="product-image"><img src="assets/xr_front.jpg" alt="iPhone XR"></div>
+      <div class="product-info">
+        <small>iPhone XR</small>
+        <h3>iPhone XR</h3>
+        <p>Front + back available</p>
+        <a class="product-button" href="https://wa.me/2347087554590?text=Hello%20FIXIT%20SXPECT%2C%20I%27m%20interested%20in%20the%20iPhone%20XR.">ASK ABOUT THIS</a>
+      </div>
+    </div>
+
+    <div class="product" data-category="older">
+      <div class="product-image"><img src="assets/xsmax.jpg" alt="iPhone XS Max"></div>
+      <div class="product-info">
+        <small>iPhone XS Max</small>
+        <h3>XS Max</h3>
+        <p>Availability on request</p>
+        <a class="product-button" href="https://wa.me/2347087554590?text=Hello%20FIXIT%20SXPECT%2C%20I%27m%20interested%20in%20the%20iPhone%20XS%20Max.">ASK ABOUT THIS</a>
+      </div>
+    </div>
+
+    <div class="product" data-category="older">
+      <div class="product-image"><img src="assets/8plus_front.jpg" alt="iPhone 8 Plus"></div>
+      <div class="product-info">
+        <small>iPhone 8 Plus</small>
+        <h3>8 Plus</h3>
+        <p>Front + back available</p>
+        <a class="product-button" href="https://wa.me/2347087554590?text=Hello%20FIXIT%20SXPECT%2C%20I%27m%20interested%20in%20the%20iPhone%208%20Plus.">ASK ABOUT THIS</a>
+      </div>
+    </div>
+
+    <div class="product" data-category="older">
+      <div class="product-image"><img src="assets/7plus_front.jpg" alt="iPhone 7 Plus"></div>
+      <div class="product-info">
+        <small>iPhone 7 Plus</small>
+        <h3>7 Plus</h3>
+        <p>Front + back available</p>
+        <a class="product-button" href="https://wa.me/2347087554590?text=Hello%20FIXIT%20SXPECT%2C%20I%27m%20interested%20in%20the%20iPhone%207%20Plus.">ASK ABOUT THIS</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+
+  <div class="section-label">The Process</div>
+
+  <h2 class="section-title">
+    Simple from<br>
+    start to finish.
+  </h2>
+
+  <div class="process">
+
+    <div class="process-card">
+      <span>01</span>
+      <h3>Tell us what you need.</h3>
+      <p>Choose a device, repair service, sale or trade-in.</p>
+    </div>
+
+    <div class="process-card">
+      <span>02</span>
+      <h3>We inspect & confirm.</h3>
+      <p>Device details, condition and final pricing are confirmed before proceeding.</p>
+    </div>
+
+    <div class="process-card">
+      <span>03</span>
+      <h3>We handle the rest.</h3>
+      <p>Drop off locally or waybill your device and receive updates through the process.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="quote">
+
+  <div class="quote-box">
+
+    <div class="section-label">Instant Request</div>
+
+    <h3>Tell us about your iPhone.</h3>
+
+    <div class="quote-grid">
+
+      <select id="model">
+        <option value="">Select model</option>
+        <option>iPhone 7 Plus</option>
+        <option>iPhone 8</option>
+        <option>iPhone 8 Plus</option>
+        <option>iPhone XR</option>
+        <option>iPhone XS Max</option>
+        <option>iPhone 11</option>
+        <option>iPhone 12</option>
+        <option>iPhone 12 Pro Max</option>
+        <option>iPhone 14 Pro</option>
+      </select>
+
+      <select id="service">
+        <option value="">Select service</option>
+        <option>Buy an iPhone</option>
+        <option>Repair my iPhone</option>
+        <option>Sell my iPhone</option>
+        <option>Trade-in</option>
+      </select>
+
+      <select id="location">
+        <option value="">Your location</option>
+        <option>Yola North</option>
+        <option>Yola South</option>
+        <option>Girei</option>
+        <option>Mubi</option>
+        <option>Other Adamawa LGA</option>
+      </select>
+
+    </div>
+
+    <div class="quote-result" id="quoteResult">
+      Select your model and service to begin.
+    </div>
+
+    <div class="hero-buttons">
+      <a id="quoteWhatsApp" class="button primary" href="https://wa.me/2347087554590">
+        CONTINUE ON WHATSAPP
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<section id="track">
+
+  <div class="section-label">Waybill Tracking</div>
+
+  <h2 class="section-title">Where's your device?</h2>
+
+  <p class="section-description">
+    Enter your FIXIT SXPECT ticket number to check your repair or waybill status.
+  </p>
+
+  <div class="tracker">
+    <input id="ticket" placeholder="Enter ticket number">
+    <button onclick="trackTicket()">TRACK</button>
+  </div>
+
+  <div id="trackResult" class="quote-result" style="display:none"></div>
+
+</section>
+
+<div class="local">
+
+  <div class="section-label">Adamawa State</div>
+
+  <h2>Local reach.<br>Premium handling.</h2>
+
+  <p>
+    Drop off locally or waybill your iPhone to FIXIT SXPECT.
+    We handle the repair, inspection and return process.
+  </p>
+
+  <div class="hero-buttons" style="justify-content:center">
+    <a class="button primary" href="https://wa.me/2347087554590">
+      TALK TO FIXIT SXPECT
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  FIXIT SXPECT © 2026
+  <br><br>
+  PREMIUM IPHONE BROKER • BUY | SELL | REPAIR
+</footer>
+
+<script>
+const WHATSAPP = "2347087554590";
+
+const filters = document.querySelectorAll(".filter");
+const products = document.querySelectorAll(".product");
+
+filters.forEach(filter => {
+  filter.addEventListener("click", () => {
+
+    filters.forEach(x => x.classList.remove("active"));
+    filter.classList.add("active");
+
+    const category = filter.dataset.filter;
+
+    products.forEach(product => {
+      product.style.display =
+        category === "all" ||
+        product.dataset.category === category
+          ? "block"
+          : "none";
+    });
+  });
+});
+
+if(window.matchMedia("(min-width:801px)").matches){
+
+  document.querySelectorAll(".product").forEach(card => {
+
+    card.addEventListener("mousemove", e => {
+
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const rotateY = ((x / rect.width) - .5) * 10;
+      const rotateX = ((y / rect.height) - .5) * -10;
+
+      card.style.transform =
+        `perspective(900px)
+         rotateX(${rotateX}deg)
+         rotateY(${rotateY}deg)
+         translateY(-5px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform =
+        "perspective(900px) rotateX(0) rotateY(0)";
+    });
+  });
+}
+
+const model = document.getElementById("model");
+const service = document.getElementById("service");
+const locationBox = document.getElementById("location");
+const quoteResult = document.getElementById("quoteResult");
+const quoteWhatsApp = document.getElementById("quoteWhatsApp");
+
+function updateQuote(){
+
+  if(!model.value || !service.value){
+
+    quoteResult.textContent =
+      "Select your model and service to begin.";
+
+    quoteWhatsApp.href =
+      `https://wa.me/${WHATSAPP}`;
+
+    return;
+  }
+
+  const locationText =
+    locationBox.value
+      ? " in " + locationBox.value
+      : "";
+
+  quoteResult.innerHTML =
+    "<strong>" +
+    model.value +
+    "</strong> • " +
+    service.value +
+    locationText +
+    "<br><br>" +
+    "Final availability and pricing will be confirmed by FIXIT SXPECT.";
+
+  const message =
+    `Hello FIXIT SXPECT, I need help with my ${model.value}. ` +
+    `Service: ${service.value}.` +
+    (locationBox.value ? ` Location: ${locationBox.value}.` : "");
+
+  quoteWhatsApp.href =
+    `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+}
+
+model.addEventListener("change", updateQuote);
+service.addEventListener("change", updateQuote);
+locationBox.addEventListener("change", updateQuote);
+
+function trackTicket(){
+
+  const ticket =
+    document.getElementById("ticket").value.trim();
+
+  const result =
+    document.getElementById("trackResult");
+
+  result.style.display = "block";
+
+  if(!ticket){
+    result.textContent = "Please enter your ticket number.";
+    return;
+  }
+
+  result.innerHTML =
+    "Ticket <strong>" +
+    ticket +
+    "</strong> received.<br><br>" +
+    "Live order tracking will connect to the FIXIT SXPECT database.";
+}
+</script>
+
+</body>
+</html>
